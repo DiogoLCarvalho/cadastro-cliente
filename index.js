@@ -27,6 +27,29 @@ app.get("/dados/:nome/:cargo", (res, resp)=>{
 
 /* ---------------------------------------------------------------------------------------------------------------------------------------------------------  */
 
+// TESTANDO CONEXÂO COM O BANCO DE DADOS
+
+import db from "./model/services/db";
+
+console.log("SELECT * FROM ");
+const usuarios = await db.selectUsuario();
+console.log(usuarios);
+
+console.log("INSERT INTO USUARIO");
+const result = await db.inserirUsuario({nome:"Diogo", senha:"uihdssauihus783"});
+console.log(result);
+
+console.log("DELETE FROM USUARIO");
+const deleteResult = await db.deletarUsuario(2);
+console.log(deleteResult);
+
+console.log("UPDATE USUARIO");
+const updateResult = await db.updateUsuario(3, {nome:"Diogo Lima Carvalho", senha:"hhjdhjjdsd7368"});
+console.log(updateResult);
+
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------------  */
+
 // Criar e rodar servidor
 app.listen(8081, () => {
     console.log("Será que eu lembro o código?");
